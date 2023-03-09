@@ -1,5 +1,5 @@
 import { ApolloClient, HttpLink, InMemoryCache, split } from "@apollo/client";
-import { GraphQLWsLink } from "@apollo/client/link/subscriptions"
+import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { Kind, OperationTypeNode } from "graphql";
 import { createClient as createWsClient } from "graphql-ws";
@@ -8,28 +8,28 @@ const PORT = 9000;
 const GRAPHQL_URL = `localhost:${PORT}/graphql`;
 
 const httpLink = new HttpLink({
-    uri: `http://${GRAPHQL_URL}`
+  uri: `http://${GRAPHQL_URL}`,
 });
 
 const wsLink = new GraphQLWsLink(
-    createWsClient({
-        url: `ws://${GRAPHQL_URL}`,
-        connectionParams: () => ({
-            // TO DO
-            accessToken: null
-        })
-    })
+  createWsClient({
+    url: `ws://${GRAPHQL_URL}`,
+    connectionParams: () => ({
+      // TO DO
+      accessToken: null,
+    }),
+  })
 );
 
-const isSubscription = ({query}) => {
-    const {kind, operation} = getMainDefinition(query);
-    return (
-        kind === Kind.OPERATION_DEFINITION &&
-        operation === OperationTypeNode.SUBSCRIPTION
-    )
+const isSubscription = ({ query }) => {
+  const { kind, operation } = getMainDefinition(query);
+  return (
+    kind === Kind.OPERATION_DEFINITION &&
+    operation === OperationTypeNode.SUBSCRIPTION
+  );
 };
 
 export const client = new ApolloClient({
-    link: split(isSubscription, wsLink, httpLink),
-    cache: new InMemoryCache(),
+  link: split(isSubscription, wsLink, httpLink),
+  cache: new InMemoryCache(),
 });

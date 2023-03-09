@@ -1,16 +1,27 @@
 import { ApolloProvider } from "@apollo/client";
 import { useState } from "react";
+
+import LoginForm from "./components/login/LoginForm";
+import Home from "./pages/Home";
+import { getUser } from "./utils/auth";
 import { client } from "./graphql/client";
+import { logout } from "./utils/auth";
+import NavBar from "./components/common/NavBar";
 
 const App = () => {
-    const [user, setUser] = useState(null);
+  const [user, setUser] = useState(getUser);
 
-    return (
-        <ApolloProvider client={client}>
-            <h1 className="text-3xl font-bold underline">Test</h1>
-            {user ? <div>Logged In</div> : <h1 className="text-3xl font-bold underline">Please Login</h1>}
-        </ApolloProvider>
-    );
-}
+  const handleLogout = () => {
+    logout();
+    setUser(null);
+  };
+
+  return (
+    <ApolloProvider client={client}>
+      <NavBar user={user} onLogout={handleLogout} />
+      {user ? <Home /> : <LoginForm onLogin={setUser} />}
+    </ApolloProvider>
+  );
+};
 
 export default App;
