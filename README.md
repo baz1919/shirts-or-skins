@@ -1,2 +1,2 @@
 # shirts-or-skins
-Organise 
+Organise footy, sort teams, request payments
