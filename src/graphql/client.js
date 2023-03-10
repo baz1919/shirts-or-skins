@@ -6,14 +6,16 @@ import { createClient as createWsClient } from "graphql-ws";
 
 const PORT = 9000;
 const GRAPHQL_URL = `localhost:${PORT}/graphql`;
+const TEST_URL =
+  "baz1919-bookish-cod-jj576p55r43p5xq-9000.preview.app.github.dev/graphql";
 
 const httpLink = new HttpLink({
-  uri: `http://${GRAPHQL_URL}`,
+  uri: `https://${TEST_URL || GRAPHQL_URL}`,
 });
 
 const wsLink = new GraphQLWsLink(
   createWsClient({
-    url: `ws://${GRAPHQL_URL}`,
+    url: `ws://${TEST_URL || GRAPHQL_URL}`,
     connectionParams: () => ({
       // TO DO
       accessToken: null,
