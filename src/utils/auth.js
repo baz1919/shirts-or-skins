@@ -1,10 +1,11 @@
 import jwtDecode from "jwt-decode";
 
-const ACCESS_TOKEN_KEY = "accessToken";
-// const API_URL = 'http://localhost:9000';
+const PROTOCOL = "https://";
+export const DOMAIN =
+  "baz1919-bookish-cod-jj576p55r43p5xq-9000.preview.app.github.dev";
 
-const TMP_URL =
-  "https://baz1919-bookish-cod-jj576p55r43p5xq-9000.preview.app.github.dev";
+const ACCESS_TOKEN_KEY = "accessToken";
+// const API_URL = "http://localhost:9000";
 
 export const getAccessToken = () => {
   return localStorage.getItem(ACCESS_TOKEN_KEY);
@@ -19,7 +20,7 @@ export const getUser = () => {
 };
 
 export const login = async (userId, password) => {
-  const response = await fetch(`${TMP_URL}/login`, {
+  const response = await fetch(`${PROTOCOL}${DOMAIN}/login`, {
     method: "POST",
     headers: {
       "content-type": "application/json",

@@ -3,19 +3,18 @@ import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { Kind, OperationTypeNode } from "graphql";
 import { createClient as createWsClient } from "graphql-ws";
+import { DOMAIN } from "../utils/auth";
 
-const PORT = 9000;
-const GRAPHQL_URL = `localhost:${PORT}/graphql`;
-const TEST_URL =
-  "baz1919-bookish-cod-jj576p55r43p5xq-9000.preview.app.github.dev/graphql";
+// const PORT = 9000;
+const GRAPHQL_URL = `${DOMAIN}:/graphql`;
 
 const httpLink = new HttpLink({
-  uri: `https://${TEST_URL || GRAPHQL_URL}`,
+  uri: `https://${GRAPHQL_URL}`,
 });
 
 const wsLink = new GraphQLWsLink(
   createWsClient({
-    url: `ws://${TEST_URL || GRAPHQL_URL}`,
+    url: `ws://${GRAPHQL_URL}`,
     connectionParams: () => ({
       // TO DO
       accessToken: null,
