@@ -1,14 +1,16 @@
 import jwtDecode from "jwt-decode";
 
-const PROTOCOL = "https://";
-export const DOMAIN =
-  "baz1919-bookish-cod-jj576p55r43p5xq-9000.preview.app.github.dev";
+export const DOMAIN = "localhost";
+const PORT = 9000;
 
 const ACCESS_TOKEN_KEY = "accessToken";
-// const API_URL = "http://localhost:9000";
+const API_URL = `http://${DOMAIN}:${PORT}`;
 
-export const getAccessToken = () => {
-  return localStorage.getItem(ACCESS_TOKEN_KEY);
+export const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN_KEY);
+
+const getUserFromToken = (token) => {
+  const jwtPayload = jwtDecode(token);
+  return { id: jwtPayload.sub };
 };
 
 export const getUser = () => {
@@ -20,7 +22,7 @@ export const getUser = () => {
 };
 
 export const login = async (userId, password) => {
-  const response = await fetch(`${PROTOCOL}${DOMAIN}/login`, {
+  const response = await fetch(`${API_URL}/login`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -37,9 +39,4 @@ export const login = async (userId, password) => {
 
 export const logout = () => {
   localStorage.removeItem(ACCESS_TOKEN_KEY);
-};
-
-const getUserFromToken = (token) => {
-  const jwtPayload = jwtDecode(token);
-  return { id: jwtPayload.sub };
 };

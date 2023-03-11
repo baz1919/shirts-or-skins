@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { login } from "../../../utils/auth.js";
+import * as React from "react";
+import { login } from "../../../utils/auth";
 
 const LoginForm = ({ onLogin }) => {
-  const [userId, setUserId] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  const [userId, setUserId] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [error, setError] = React.useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,7 +18,7 @@ const LoginForm = ({ onLogin }) => {
   };
 
   return (
-    <section className="flex items-center justify-center h-screen bg-indigo-500">
+    <section className="flex items-center justify-center h-screen bg-gradient-to-b from-white to-slate-200">
       <div className="flex items-center justify-center flex-col">
         <form
           onSubmit={handleSubmit}
@@ -50,7 +50,7 @@ const LoginForm = ({ onLogin }) => {
           <div className="flex items-center justify-center">
             <button
               type="submit"
-              className="m-2 px-4 py-2 rounded-full bg-cyan-500"
+              className="m-2 px-4 py-2 rounded-full bg-blue-200"
             >
               Login
             </button>

@@ -20,3 +20,7 @@ export const MATCHES_QUERY = gql`
     }
   }
 `;
+
+export default {
+  MATCHES_QUERY,
+};

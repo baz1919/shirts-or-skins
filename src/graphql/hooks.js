@@ -9,8 +9,9 @@ export const useMatches = () => {
     },
   });
 
-  console.log(data);
   return {
     matches: data?.matches ?? [],
   };
 };
+
+export default useMatches;

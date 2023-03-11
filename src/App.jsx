@@ -1,11 +1,10 @@
 import { ApolloProvider } from "@apollo/client";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import LoginForm from "./components/login/LoginForm";
 import Home from "./pages/Home";
-import { getUser } from "./utils/auth";
+import { getUser, logout } from "./utils/auth";
 import { client } from "./graphql/client";
-import { logout } from "./utils/auth";
 import NavBar from "./components/common/NavBar";
 
 const App = () => {
