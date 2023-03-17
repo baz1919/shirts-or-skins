@@ -29,11 +29,13 @@ export const login = async (userId, password) => {
     },
     body: JSON.stringify({ userId, password }),
   });
+
   if (response.ok) {
     const { token } = await response.json();
     localStorage.setItem(ACCESS_TOKEN_KEY, token);
     return { id: userId };
   }
+
   return null;
 };
 

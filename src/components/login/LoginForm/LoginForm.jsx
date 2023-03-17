@@ -2,14 +2,14 @@ import * as React from "react";
 import { login } from "../../../utils/auth";
 
 const LoginForm = ({ onLogin }) => {
-  const [userId, setUserId] = React.useState("");
+  const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError(false);
-    const user = await login(userId, password);
+    const user = await login(username, password);
     if (user) {
       onLogin(user);
     } else {
@@ -30,8 +30,8 @@ const LoginForm = ({ onLogin }) => {
             required
             autoComplete="username"
             placeholder="Username"
-            value={userId}
-            onChange={(event) => setUserId(event.target.value)}
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
           />
           <input
             className="my-2 p-2"
