@@ -7,7 +7,6 @@ const NavBar = ({ user, onLogout }) => (
     <ul>
       <li>
         <strong>Shirts v Skins</strong>
-        {/* Shirts v Skins */}
       </li>
     </ul>
     <ul>
