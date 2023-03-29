@@ -1,12 +1,9 @@
 import * as React from "react";
 
-// import pitchBg from "../../../../img/pitch.jpg";
-
-import "./MatchTile.css";
+import styles from "./MatchTile.module.css";
 
 const MatchTile = ({ players: { team1, team2 }, date }) => (
-  <article className="tile">
-    {/* <img src={pitchBg} alt="Football pitch" className="background" /> */}
+  <article className={styles.tile}>
     <div>
       <h3>Shirts</h3>
       <p>vs</p>

@@ -1,23 +1,25 @@
+import { getCookie, setCookie, deleteCookie } from "cookies-next";
 import jwtDecode from "jwt-decode";
 
 export const DOMAIN = "localhost";
 const PORT = 9000;
 
-const ACCESS_TOKEN_KEY = "accessToken";
+export const ACCESS_TOKEN_KEY = "accessToken";
 const API_URL = `http://${DOMAIN}:${PORT}`;
 
-export const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN_KEY);
+export const getAccessToken = () => getCookie(ACCESS_TOKEN_KEY);
 
 const getUserFromToken = (token) => {
   const jwtPayload = jwtDecode(token);
   return { id: jwtPayload.sub };
 };
 
-export const getUser = () => {
-  const token = getAccessToken();
+export const getUser = (initialToken = null) => {
+  const token = initialToken || getAccessToken();
   if (!token) {
     return null;
   }
+
   return getUserFromToken(token);
 };
 
@@ -32,7 +34,7 @@ export const login = async (userId, password) => {
 
   if (response.ok) {
     const { token } = await response.json();
-    localStorage.setItem(ACCESS_TOKEN_KEY, token);
+    setCookie(ACCESS_TOKEN_KEY, token);
     return { id: userId };
   }
 
@@ -40,5 +42,5 @@ export const login = async (userId, password) => {
 };
 
 export const logout = () => {
-  localStorage.removeItem(ACCESS_TOKEN_KEY);
+  deleteCookie(ACCESS_TOKEN_KEY);
 };

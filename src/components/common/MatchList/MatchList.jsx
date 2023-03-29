@@ -3,8 +3,6 @@ import * as React from "react";
 import { useMatches } from "../../../graphql/hooks";
 import MatchTile from "./MatchTile";
 
-import "./MatchList.css";
-
 const MatchList = () => {
   const { matches } = useMatches();
 

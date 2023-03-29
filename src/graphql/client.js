@@ -1,10 +1,9 @@
-import {
-  ApolloClient, HttpLink, InMemoryCache, split,
-} from "@apollo/client";
+import { ApolloClient, HttpLink, InMemoryCache, split } from "@apollo/client";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { Kind, OperationTypeNode } from "graphql";
 import { createClient as createWsClient } from "graphql-ws";
+import { WebSocket } from "ws";
 import { DOMAIN, getAccessToken } from "../utils/auth";
 
 const PORT = 9000;
@@ -20,14 +19,15 @@ const wsLink = new GraphQLWsLink(
     connectionParams: () => ({
       accessToken: getAccessToken(),
     }),
-  }),
+    webSocketImpl: WebSocket,
+  })
 );
 
 const isSubscription = ({ query }) => {
   const { kind, operation } = getMainDefinition(query);
   return (
-    kind === Kind.OPERATION_DEFINITION
-    && operation === OperationTypeNode.SUBSCRIPTION
+    kind === Kind.OPERATION_DEFINITION &&
+    operation === OperationTypeNode.SUBSCRIPTION
   );
 };
 
