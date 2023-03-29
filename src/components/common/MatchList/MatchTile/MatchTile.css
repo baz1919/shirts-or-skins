@@ -1,0 +1,17 @@
+.tile {
+  margin: 4px auto;
+  padding: 24px;
+  width: 80%;
+  max-width: 1400px;
+  /* overflow: hidden; */
+  /* position: relative; */
+  /* mix-blend-mode: difference; */
+}
+
+/* .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: -10;
+} */

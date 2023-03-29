@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import { getUser, logout } from "./utils/auth";
 import { client } from "./graphql/client";
 import NavBar from "./components/common/NavBar";
+import "./App.css";
 
 const App = () => {
   const [user, setUser] = useState(getUser);
@@ -17,8 +18,10 @@ const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <NavBar user={user} onLogout={handleLogout} />
-      {user ? <Home /> : <LoginForm onLogin={setUser} />}
+      <main className="container">
+        <NavBar user={user} onLogout={handleLogout} />
+        {user ? <Home /> : <LoginForm onLogin={setUser} />}
+      </main>
     </ApolloProvider>
   );
 };

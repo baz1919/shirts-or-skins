@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable jsx-a11y/no-redundant-roles */
 import * as React from "react";
 import { useCreateMatch } from "../../../graphql/hooks";
 
@@ -18,21 +20,23 @@ const CreateMatch = () => {
   if (showCalendar) {
     return (
       <div>
-        <h1>
-          Calendar
-        </h1>
-        <button type="button" onClick={handleCreateMatch}>
-          Create match on
-          {" "}
-          {date}
+        <h1>Calendar</h1>
+        <button type="button" className="half" onClick={handleCreateMatch}>
+          Create match on {date}
         </button>
         <br />
-        <button type="button" onClick={toggleCalendar}>Close</button>
+        <button type="button" onClick={toggleCalendar}>
+          Close
+        </button>
       </div>
     );
   }
 
-  return <button type="button" onClick={toggleCalendar} className="px-4 py-2 rounded-full bg-blue-200 h-10 my-4 text">Create match</button>;
+  return (
+    <button type="button" className="half" onClick={toggleCalendar}>
+      Create match
+    </button>
+  );
 };
 
 export default CreateMatch;

@@ -18,14 +18,10 @@ const LoginForm = ({ onLogin }) => {
   };
 
   return (
-    <section className="flex items-center justify-center h-screen bg-gradient-to-b from-white to-slate-200">
-      <div className="flex items-center justify-center flex-col">
-        <form
-          onSubmit={handleSubmit}
-          className="flex items-center justify-center flex-col"
-        >
+    <section>
+      <div>
+        <form onSubmit={handleSubmit}>
           <input
-            className="my-2 p-2"
             type="text"
             required
             autoComplete="username"
@@ -34,7 +30,6 @@ const LoginForm = ({ onLogin }) => {
             onChange={(event) => setUsername(event.target.value)}
           />
           <input
-            className="my-2 p-2"
             type="password"
             required
             autoComplete="current-password"
@@ -44,16 +39,11 @@ const LoginForm = ({ onLogin }) => {
           />
           {error && (
             <div>
-              <p className="message-body">Login failed</p>
+              <p>Login failed</p>
             </div>
           )}
-          <div className="flex items-center justify-center">
-            <button
-              type="submit"
-              className="m-2 px-4 py-2 rounded-full bg-blue-200"
-            >
-              Login
-            </button>
+          <div>
+            <button type="submit">Login</button>
           </div>
         </form>
       </div>
