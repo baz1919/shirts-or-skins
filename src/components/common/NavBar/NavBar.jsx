@@ -1,22 +1,27 @@
 import * as React from "react";
-
-import LogoutButton from "../LogoutButton";
+import Link from "next/link";
 
 const NavBar = ({ user, onLogout }) => (
-  <nav>
-    <ul>
-      <li>
-        <strong>Shirts v Skins</strong>
-      </li>
-    </ul>
-    <ul>
-      {user ? (
+  <div className="container">
+    <nav>
+      <ul>
         <li>
-          <LogoutButton onLogout={onLogout} />
+          <Link href="/">
+            <strong>Shirts v Skins</strong>
+          </Link>
         </li>
-      ) : null}
-    </ul>
-  </nav>
+      </ul>
+      <ul>
+        {user ? (
+          <li>
+            <button onClick={onLogout} type="button">
+              Logout
+            </button>
+          </li>
+        ) : null}
+      </ul>
+    </nav>
+  </div>
 );
 
 export default NavBar;

@@ -21,6 +21,7 @@ module.exports = {
     ],
     "no-restricted-exports": 0,
     "arrow-body-style": ["error", "as-needed"],
+    "jsx-a11y/anchor-is-valid": 0,
     quotes: ["error", "double"],
     "linebreak-style": 0,
     "prettier/prettier": 0,

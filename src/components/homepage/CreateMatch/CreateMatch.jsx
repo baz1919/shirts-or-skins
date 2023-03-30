@@ -19,7 +19,7 @@ const CreateMatch = () => {
 
   if (showCalendar) {
     return (
-      <div>
+      <article>
         <h1>Calendar</h1>
         <button type="button" className="half" onClick={handleCreateMatch}>
           Create match on {date}
@@ -28,14 +28,17 @@ const CreateMatch = () => {
         <button type="button" onClick={toggleCalendar}>
           Close
         </button>
-      </div>
+      </article>
     );
   }
 
   return (
-    <button type="button" className="half" onClick={toggleCalendar}>
-      Create match
-    </button>
+    <div>
+      <button type="button" className="half secondary" onClick={toggleCalendar}>
+        Create match
+      </button>
+      <h5>Or edit an existing one</h5>
+    </div>
   );
 };
 

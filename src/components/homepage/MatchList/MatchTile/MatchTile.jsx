@@ -1,15 +1,16 @@
+import Link from "next/link";
 import * as React from "react";
 
 import styles from "./MatchTile.module.css";
 
-const MatchTile = ({ players: { team1, team2 }, date }) => (
+const MatchTile = ({ players: { team1, team2 }, date, id }) => (
   <article className={styles.tile}>
-    <div>
+    <div className={styles.row}>
       <h3>Shirts</h3>
-      <p>vs</p>
+      <p>v</p>
       <h3>Skins</h3>
     </div>
-    <div>
+    <div className={styles.row}>
       <div>
         {team1.map(({ displayName }, index) => (
           // eslint-disable-next-line react/no-array-index-key
@@ -19,17 +20,11 @@ const MatchTile = ({ players: { team1, team2 }, date }) => (
       <div>
         <p>{new Date(date).toDateString()}</p>
         <p>{new Date(date).toLocaleTimeString()}</p>
-        <button
-          onClick={() => {
-            // TODO
-            // eslint-disable-next-line no-alert
-            alert("TO DO");
-          }}
-          type="button"
-          className="contrast"
-        >
-          Edit Match
-        </button>
+        <Link href={`/match/${id}`}>
+          <button type="button" className="outline">
+            Edit Match
+          </button>
+        </Link>
       </div>
       <div>
         {team2.map(({ displayName }, index) => (

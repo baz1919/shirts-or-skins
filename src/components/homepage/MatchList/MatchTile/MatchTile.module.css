@@ -1,11 +1,27 @@
 .tile {
-  margin: 4px auto;
-  padding: 24px;
-  width: 80%;
+  margin: 1rem auto;
+  padding: 16px;
+  width: 95%;
   max-width: 1400px;
+  text-align: center;
+
   /* overflow: hidden; */
   /* position: relative; */
   /* mix-blend-mode: difference; */
+}
+
+.row {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem 0;
+}
+
+.row > h3 {
+  margin: auto;
+}
+
+.row > p {
+  margin: auto;
 }
 
 /* .background {
