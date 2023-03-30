@@ -1,7 +1,5 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable jsx-a11y/no-redundant-roles */
 import * as React from "react";
-import { useCreateMatch } from "../../../graphql/hooks";
+import { useCreateMatch } from "graphql/hooks";
 
 const CreateMatch = () => {
   const [showCalendar, setShowCalendar] = React.useState(false);
@@ -21,11 +19,15 @@ const CreateMatch = () => {
     return (
       <article>
         <h1>Calendar</h1>
-        <button type="button" className="half" onClick={handleCreateMatch}>
+        <button type="button" onClick={handleCreateMatch}>
           Create match on {date}
         </button>
         <br />
-        <button type="button" onClick={toggleCalendar}>
+        <button
+          type="button"
+          className="half secondary"
+          onClick={toggleCalendar}
+        >
           Close
         </button>
       </article>
@@ -34,10 +36,9 @@ const CreateMatch = () => {
 
   return (
     <div>
-      <button type="button" className="half secondary" onClick={toggleCalendar}>
-        Create match
+      <button type="button" className="half" onClick={toggleCalendar}>
+        Create new match
       </button>
-      <h5>Or edit an existing one</h5>
     </div>
   );
 };

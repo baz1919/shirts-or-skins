@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { MATCHES_QUERY } from "./queries";
-import { getAccessToken } from "../utils/auth";
-import { CREATE_MATCH } from "./mutations";
+import { getAccessToken } from "utils/auth";
+import { MATCHES_QUERY } from "graphql/queries";
+import { CREATE_MATCH, JOIN_MATCH } from "graphql/mutations";
 
 export const useMatches = () => {
   const { data } = useQuery(MATCHES_QUERY, {
@@ -20,7 +20,11 @@ export const useCreateMatch = () => {
 
   return {
     createMatch: async (date) => {
-      const { data: { match: { id } } } = await mutate({
+      const {
+        data: {
+          match: { id },
+        },
+      } = await mutate({
         variables: { matchDate: date },
         context: {
           headers: { Authorization: `Bearer ${getAccessToken()}` },
@@ -32,4 +36,25 @@ export const useCreateMatch = () => {
   };
 };
 
-export default useMatches;
+export const useJoinMatch = () => {
+  const [mutate, { error }] = useMutation(JOIN_MATCH);
+
+  return {
+    joinMatch: async (matchId) => {
+      const { data } = await mutate({
+        variables: { matchId },
+        context: {
+          headers: { Authorization: `Bearer ${getAccessToken()}` },
+        },
+      });
+
+      return data;
+    },
+    error,
+  };
+};
+
+export default {
+  useMatches,
+  useCreateMatch,
+};

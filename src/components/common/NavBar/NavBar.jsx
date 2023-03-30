@@ -7,14 +7,15 @@ const NavBar = ({ user, onLogout }) => (
       <ul>
         <li>
           <Link href="/">
-            <strong>Shirts v Skins</strong>
+            <h2>Shirts v Skins</h2>
+            {/* </strong> */}
           </Link>
         </li>
       </ul>
       <ul>
         {user ? (
           <li>
-            <button onClick={onLogout} type="button">
+            <button onClick={onLogout} type="button" className="secondary">
               Logout
             </button>
           </li>

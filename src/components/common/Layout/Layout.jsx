@@ -1,8 +1,7 @@
 import * as React from "react";
-import NavBar from "../NavBar";
-import LoginForm from "../../login/LoginForm";
-
-import { getUser, logout } from "../../../utils/auth";
+import { getUser, logout } from "utils/auth";
+import LoginForm from "components/login/LoginForm";
+import NavBar from "components/common/NavBar";
 
 const Layout = ({ initialUser, children }) => {
   const [user, setUser] = React.useState(initialUser || getUser());

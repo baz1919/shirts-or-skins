@@ -1,5 +1,4 @@
 import * as React from "react";
-// eslint-disable-next-line object-curly-newline
 import { Html, Head, Main, NextScript } from "next/document";
 
 const Document = () => (

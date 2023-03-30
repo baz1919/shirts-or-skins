@@ -4,7 +4,7 @@ import { getMainDefinition } from "@apollo/client/utilities";
 import { Kind, OperationTypeNode } from "graphql";
 import { createClient as createWsClient } from "graphql-ws";
 import { WebSocket } from "ws";
-import { DOMAIN, getAccessToken } from "../utils/auth";
+import { DOMAIN, getAccessToken } from "utils/auth";
 
 const PORT = 9000;
 const GRAPHQL_URL = `${DOMAIN}:${PORT}/graphql`;

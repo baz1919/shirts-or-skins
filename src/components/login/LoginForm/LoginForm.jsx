@@ -1,5 +1,5 @@
 import * as React from "react";
-import { login } from "../../../utils/auth";
+import { login } from "utils/auth";
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = React.useState("");

@@ -2,8 +2,8 @@ import * as React from "react";
 import Head from "next/head";
 import { ApolloProvider } from "@apollo/client";
 
-import Layout from "../components/common/Layout";
-import { client } from "../graphql/client";
+import Layout from "components/common/Layout";
+import { client } from "graphql/client";
 
 import "./styles.css";
 

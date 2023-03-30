@@ -1,10 +1,10 @@
 import * as React from "react";
 import { getCookie } from "cookies-next";
 
-import CreateMatch from "../components/homepage/CreateMatch";
-import MatchList from "../components/homepage/MatchList";
+import CreateMatch from "components/homepage/CreateMatch";
+import MatchList from "components/homepage/MatchList";
 
-import { ACCESS_TOKEN_KEY, getUser } from "../utils/auth";
+import { ACCESS_TOKEN_KEY, getUser } from "utils/auth";
 
 const App = () => (
   <section>

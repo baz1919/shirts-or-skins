@@ -1,13 +1,14 @@
 import * as React from "react";
 
-import { useMatches } from "../../../graphql/hooks";
-import MatchTile from "./MatchTile";
+import { useMatches } from "graphql/hooks";
+import MatchTile from "components/homepage/MatchList/MatchTile";
 
 const MatchList = () => {
   const { matches } = useMatches();
 
   return matches.length ? (
     <div>
+      <h3>Upcoming Matches</h3>
       {matches.map(({ id, players, date }) => (
         <MatchTile key={id} id={id} players={players} date={date} />
       ))}
