@@ -21,6 +21,15 @@ export const MATCHES_QUERY = gql`
   }
 `;
 
+export const MY_MATCHES_QUERY = gql`
+  query MyMatches {
+    myMatches {
+      id
+    }
+  }
+`;
+
 export default {
   MATCHES_QUERY,
+  MY_MATCHES_QUERY,
 };

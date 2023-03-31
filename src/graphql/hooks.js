@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { getAccessToken } from "utils/auth";
-import { MATCHES_QUERY } from "graphql/queries";
+import { MATCHES_QUERY, MY_MATCHES_QUERY } from "graphql/queries";
 import { CREATE_MATCH, JOIN_MATCH } from "graphql/mutations";
 
 export const useMatches = () => {
@@ -12,6 +12,18 @@ export const useMatches = () => {
 
   return {
     matches: data?.matches ?? [],
+  };
+};
+
+export const useMyMatches = () => {
+  const { data } = useQuery(MY_MATCHES_QUERY, {
+    context: {
+      headers: { Authorization: `Bearer ${getAccessToken()}` },
+    },
+  });
+
+  return {
+    myMatches: data?.myMatches ?? [],
   };
 };
 
